@@ -1,18 +1,7 @@
 import { View, Button, StyleSheet } from "react-native";
 import { Formik, useField } from "formik";
 import StyledTextInput from "../components/StyledTextInput";
-
-const FormikInputValue = ({ name, ...props }) => {
-  //el field es el valor del campoj como el email, meta es la metainformaciond el campo como errores, y el helpers es el setvalue y el seterror
-  const [field, meta, helpers] = useField(name);
-  return (
-    <StyledTextInput
-      value={field.value}
-      onChangeText={(value) => helpers.setValue(value)}
-      {...props}
-    />
-  );
-};
+import StyledText from "../components/StyledText";
 
 const initialValues = {
   email: "",
@@ -20,14 +9,48 @@ const initialValues = {
 };
 
 const styles = StyleSheet.create({
+  error: {
+    color: "red",
+    fontSize: 12,
+    marginBottom: 20,
+    marginTop: -10,
+  },
   form: {
     margin: 12,
   },
 });
 
+const FormikInputValue = ({ name, ...props }) => {
+  //el field es el valor del campoj como el email, meta es la metainformaciond el campo como errores, y el helpers es el setvalue y el seterror
+  const [field, meta, helpers] = useField(name);
+  return (
+    <>
+      <StyledTextInput
+        error={meta.error}
+        value={field.value}
+        onChangeText={(value) => helpers.setValue(value)}
+        {...props}
+      />
+      {meta.error && <StyledText style={styles.error}>{meta.error}</StyledText>}
+    </>
+  );
+};
+
+const validate = (values) => {
+  const errors = {};
+  if (!values.email) {
+    errors.email = "Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+  console.log(errors);
+  return errors;
+};
+
 export default function LogInPage() {
   return (
     <Formik
+      validate={validate}
       initialValues={initialValues}
       onSubmit={(values) => console.log(values)}
     >
