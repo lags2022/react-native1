@@ -50,10 +50,6 @@ export default function AppBar() {
       <ScrollView horizontal style={styles.scroll}>
         <AppBarTab to="/">Repositories</AppBarTab>
         <AppBarTab to="/signin">Sign In</AppBarTab>
-        <AppBarTab to="/register">Register</AppBarTab>
-        <AppBarTab to="/sub">Sub to Twich</AppBarTab>
-        <AppBarTab to="/midu">Midu hi!</AppBarTab>
-        <AppBarTab to="/about">About</AppBarTab>
       </ScrollView>
     </View>
   );
