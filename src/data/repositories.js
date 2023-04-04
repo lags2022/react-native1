@@ -55,4 +55,15 @@ export default [
     reviewCount: 11,
     ownerAvatarUrl: "https://avatars.githubusercontent.com/u/4223?v=4",
   },
+  {
+    id: "midudeved",
+    fullName: "midu/dev",
+    description: "blog de desarrollo web",
+    language: "HTML",
+    forksCount: 3212,
+    stargazersCount: 13212,
+    ratingAverage: 0,
+    reviewCount: 0,
+    ownerAvatarUrl: "https://avatars.githubusercontent.com/u/1307927?v=4",
+  },
 ];

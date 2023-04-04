@@ -1,11 +1,11 @@
-import { Text, View } from "react-native";
-import Constants from "expo-constants";
+import { View } from "react-native";
 import RepositoryList from "./RepositoryList";
+import AppBar from "./AppBar";
 
 export default function Main() {
   return (
-    <View style={{ marginTop: Constants.statusBarHeight, flexGrow: 1 }}>
-      <Text>Nuestro repositorio de github s1</Text>
+    <View style={{ flex: 1 }}>
+      <AppBar />
       <RepositoryList />
     </View>
   );
