@@ -1,14 +1,24 @@
 import Main from "./src/components/Main";
 import { NativeRouter } from "react-router-native";
 import { StatusBar } from "expo-status-bar";
-import { ApolloProvider } from "@apollo/client";
-import createApolloClient from "./src/utils/apolloClient";
+import {
+  ApolloProvider,
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+} from "@apollo/client";
 
-const apolloClient = createApolloClient();
+const client = new ApolloClient({
+  connectToDevTools: true,
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: "http://192.168.0.5:4000/",
+  }),
+});
 
 export default function App() {
   return (
-    <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={client}>
       <StatusBar style="light" />
       <NativeRouter>
         <Main />
